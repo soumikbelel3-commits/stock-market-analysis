@@ -182,6 +182,52 @@ def test_quantize_only_bites_the_short_leg():
           f"short {short_err:.4f}pp")
 
 
+def test_quantize_never_rounds_through_the_position_cap():
+    """Regression: 1.68 lots rounded to 2 put a short at 14.3% against a 12% cap."""
+    book = pd.DataFrame({"side": ["long", "short"], "weight": [0.12, -0.12]},
+                        index=["L1.NS", "S1.NS"])
+    prices = pd.Series({"L1.NS": 1000.0, "S1.NS": 1141.5})
+    lots = pd.Series({"L1.NS": 1.0, "S1.NS": 625.0})     # one lot = 7.13% of 1 crore
+    q = pf.quantize_to_lots(book, prices, lots, capital=10_000_000, max_pos=0.12)
+    assert q.loc["S1.NS", "units"] == -1, q
+    assert q["realised_weight"].abs().max() <= 0.12 + 1e-9, q
+    assert q.attrs["cap_limited"] == ["S1.NS"], q.attrs["cap_limited"]
+
+    loose = pf.quantize_to_lots(book, prices, lots, capital=10_000_000, max_pos=None)
+    assert loose.loc["S1.NS", "units"] == -2
+    assert loose.loc["S1.NS", "realised_weight"] < -0.12, "fixture must reproduce the breach"
+    print(f"  trap #5  cap-aware rounding: {loose.loc['S1.NS', 'realised_weight']:+.2%} "
+          f"-> {q.loc['S1.NS', 'realised_weight']:+.2%}")
+
+
+def test_rematch_long_leg_restores_beta_after_lot_rounding():
+    book = pd.DataFrame({"side": ["long", "long", "short", "short"],
+                         "weight": [0.25, 0.25, -0.25, -0.25]},
+                        index=["L1.NS", "L2.NS", "S1.NS", "S2.NS"])
+    betas = pd.Series(1.0, index=book.index)
+    prices = pd.Series({"L1.NS": 1000.0, "L2.NS": 500.0,
+                        "S1.NS": 1000.0, "S2.NS": 1000.0})
+    lots = pd.Series({"L1.NS": 1.0, "L2.NS": 1.0, "S1.NS": 1400.0, "S2.NS": 1200.0})
+    # Shorts round to 2 lots each: 28% + 24% = 52% against a 50% long leg.
+    naive = pf.quantize_to_lots(book, prices, lots, capital=10_000_000, max_pos=0.30)
+    naive_beta = float((naive["realised_weight"] * betas).sum())
+    assert abs(naive_beta) > 0.01, naive_beta
+
+    q = pf.rematch_long_leg(book, prices, lots, betas, capital=10_000_000,
+                            max_pos=0.30, gross=1.10)
+    assert q.attrs["long_scale_bound"] == "beta match", q.attrs
+    assert abs(q.attrs["realised_net_beta"]) < 1e-3, q.attrs["realised_net_beta"]
+    assert q["realised_weight"].abs().max() <= 0.30 + 1e-9
+
+    # A tight gross budget binds first and is reported, not breached.
+    tight = pf.rematch_long_leg(book, prices, lots, betas, capital=10_000_000,
+                                max_pos=0.30, gross=1.00)
+    assert tight.attrs["long_scale_bound"] == "gross budget", tight.attrs
+    assert tight.attrs["realised_gross"] <= 1.00 + 1e-9, tight.attrs["realised_gross"]
+    print(f"  trap #5  long-leg rematch: net beta {naive_beta:+.3f} -> "
+          f"{q.attrs['realised_net_beta']:+.4f}")
+
+
 # --------------------------------------------------------------------------
 # sector gate (notebook 08's verification item)
 # --------------------------------------------------------------------------

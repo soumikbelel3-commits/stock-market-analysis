@@ -8,9 +8,9 @@ reasons this module fixes:
 
 1. **The two legs are different instruments.** The long leg is cash-market
    delivery -- STT at 0.10% on *both* sides, stamp duty on the buy. The short leg
-   is stock futures -- STT at 0.02% on the *sell only*, a lower exchange charge,
-   negligible stamp. Statutory cost on the short leg is roughly a fifth of the
-   long leg's. A single blended number cannot express that, and it is exactly the
+   is stock futures -- STT at 0.05% on the *sell only* (0.02% before Budget
+   2026), a lower exchange charge, negligible stamp. Statutory cost on the short
+   leg is roughly a third of the long leg's. A single blended number cannot express that, and it is exactly the
    sort of thing that decides whether a marginal short is worth putting on.
 
 2. **Cost is not linear in size.** Impact grows with the square root of
@@ -344,7 +344,7 @@ def assert_cost_sanity(tc: pd.DataFrame, max_bps: float = 200.0,
       a rate entered as a percent where a fraction was expected, or an ADV in
       shares where rupees were meant;
     * a short leg priced as cash equity, which understates nothing but *overstates*
-      STT fivefold and would send sizing the wrong way.
+      STT fourfold and would send sizing the wrong way.
     """
     problems = []
     bad = tc[tc["total_bps"] > max_bps]

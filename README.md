@@ -189,10 +189,11 @@ genuinely market-neutral book funded on collateral earns the rate on its cash �
 to be asked for (`allow_zero_rf=True`), never assumed.
 
 **2 — `COST_BPS = 25` was flat across two different instruments.** The long leg is cash
-delivery: STT at 0.10% on *both* sides. The short leg is stock futures: STT at 0.02% on
-the *sell only*. Measured through `mkt.costs`, the explicit round trip is **29.30bps long
-against 7.35bps short — a factor of four.** On the current book the value-weighted all-in
-figure lands at 25.3bps, so the placeholder was almost exactly right *on average* and
+delivery: STT at 0.10% on *both* sides. The short leg is stock futures: STT at 0.05% on
+the *sell only* (0.02% until Union Budget 2026 raised it from 1 April 2026). Measured
+through `mkt.costs`, the explicit round trip is **29.30bps long against 10.35bps short —
+a factor of almost three.** On the current book the value-weighted all-in
+figure lands at 26.5bps, so the placeholder was almost exactly right *on average* and
 wrong on every individual decision it informed.
 
 Adding square-root impact then produces the capacity answer the chain could not previously
@@ -248,7 +249,7 @@ ex-post bias test real risk teams report monthly.
 **Margin** (`mkt.margin`). SPAN cannot be reproduced from public data; it comes from a
 proprietary daily risk array. What is computed is a scan-range approximation plus an exact
 ELM, labelled `approximate` everywhere it surfaces. It shows the regulatory floor binding on
-three of the five shorts, and margin rising **121% under a 3× volatility spike with no
+two of the five shorts, and margin rising **115% under a 3× volatility spike with no
 trade** — which is the mechanism behind most forced unwinds and was previously invisible.
 
 **A limit register** (`mkt.limits`). The chain enforced constraints in four scattered,
@@ -347,8 +348,16 @@ target weight below about 4.3%, whatever the model asks for.
 Sizing therefore runs **after** lot sizes are known, `portfolio.assert_implementable()`
 raises when a short leg cannot be expressed in whole lots (reporting the minimum capital
 that would work), and notebook 10 prints realised weights beside target weights. On the
-current book the short leg's rounding error is ~170× the long leg's — longs buy in single
+current book the short leg's rounding error is ~420× the long leg's — longs buy in single
 shares, shorts in whole lots. That ratio is trap #5 in one number.
+
+Two rules keep the *traded* book inside the mandate. `quantize_to_lots` never rounds a
+position up through the position cap — nearest-lot rounding once turned a 12% DRREDDY
+target (1.68 lots) into a 14.3% short, and the monitor never saw it because it read target
+weights. And `rematch_long_leg` then re-sizes the long leg, which buys in single shares, to
+the short leg as traded, so net beta is neutral on the positions that will exist (+0.012
+as constructed, −0.0002 as traded). The cost is gross: the current book trades at 0.82x
+rather than 0.98x. Notebooks 11–14 read `realised_weight`, never `target_weight`.
 
 ### Two bugs the fund layer surfaced in the existing code
 
@@ -489,9 +498,16 @@ on how much of the screen can ever be validated, not a gap to engineer around �
 daily risk array — sixteen scenarios across price and volatility, plus inter-month and
 short-option-minimum charges — and it cannot be reproduced from public data. `mkt.margin`
 computes a scan-range proxy with the regulatory floor applied, plus an ELM leg that *is*
-exact because it is a flat percentage by rule. Every function that returns one labels it
-`approximate`. Treat it as an early warning about capital adequacy, never as a broker's
-number, and never as a reason to size into the difference.
+exact because it is a flat percentage by rule (3.5% on stock futures). Every function that
+returns one labels it `approximate`. Treat it as an early warning about capital adequacy,
+never as a broker's number, and never as a reason to size into the difference — the proxy
+lands near 8–9% of notional, and broker-quoted initial margin on single-stock futures
+commonly runs well above that. Read it as a floor.
+
+**The short tickets are not order-ready.** The book names each short in lots but does not
+check SEBI's daily F&O ban list, name a contract month, price the notional off the future
+rather than spot, or model the monthly roll. Prices are the last close the run saw; re-quote
+and round to tick before placing anything.
 
 **The risk-free rate is a stated prior.** There is no keyless daily source for the Indian
 91-day T-bill, so `config.RISK_FREE_ANNUAL_PCT` carries a value and an as-of date rather

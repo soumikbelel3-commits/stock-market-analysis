@@ -658,10 +658,10 @@
     ]
   },
   "10_portfolio": {
-    "updated_at": "2026-09-09T05:21:07+00:00",
-    "signal": "6L / 5S, gross 0.98x, net -0.06x",
-    "score": 6.44,
-    "as_of": "2026-09-09",
+    "updated_at": "2026-09-11T07:18:23+00:00",
+    "signal": "6L / 5S, gross 0.82x, net -0.08x",
+    "score": 5.54,
+    "as_of": "2026-09-11",
     "capital_INR": 10000000,
     "scheme": "risk_parity",
     "neutrality": "beta-neutral",
@@ -670,64 +670,64 @@
       "rationale": "notebook 02 risk regime = Neutral; macro nowcast Mixed (no adjustment)"
     },
     "target": {
-      "gross": 1.0,
-      "net": -0.0819,
-      "vol_%": 6.69,
+      "gross": 0.9085,
+      "net": -0.1737,
+      "vol_%": 6.72,
       "vol_target_%": 12.0
     },
     "realised": {
-      "gross": 0.9793,
-      "net": -0.061,
-      "vol_%": 6.44
+      "gross": 0.8151,
+      "net": -0.0807,
+      "vol_%": 5.54
     },
-    "tracking_error_pp": 3.372,
+    "tracking_error_pp": 5.322,
     "lot_source": "live",
     "positions": {
       "KOTAKBANK.NS": {
         "side": "long",
-        "target_weight": 0.0781,
-        "realised_weight": 0.078,
-        "units": 1881,
+        "target_weight": 0.0625,
+        "realised_weight": 0.0625,
+        "units": 1501,
         "sector": "Financial Services"
       },
       "COALINDIA.NS": {
         "side": "long",
-        "target_weight": 0.0858,
-        "realised_weight": 0.0858,
-        "units": 1976,
+        "target_weight": 0.0686,
+        "realised_weight": 0.0686,
+        "units": 1607,
         "sector": "Oil Gas & Fuels"
       },
       "ADANIPORTS.NS": {
         "side": "long",
-        "target_weight": 0.0549,
-        "realised_weight": 0.0549,
-        "units": 313,
+        "target_weight": 0.0439,
+        "realised_weight": 0.0438,
+        "units": 249,
         "sector": "Services"
       },
       "ICICIBANK.NS": {
         "side": "long",
-        "target_weight": 0.0935,
-        "realised_weight": 0.0935,
-        "units": 672,
+        "target_weight": 0.0749,
+        "realised_weight": 0.0748,
+        "units": 541,
         "sector": "Financial Services"
       },
       "JSWSTEEL.NS": {
         "side": "long",
-        "target_weight": 0.0676,
-        "realised_weight": 0.0676,
-        "units": 518,
+        "target_weight": 0.0541,
+        "realised_weight": 0.0541,
+        "units": 424,
         "sector": "Metals & Mining"
       },
       "TITAN.NS": {
         "side": "long",
-        "target_weight": 0.0793,
-        "realised_weight": 0.0794,
-        "units": 159,
+        "target_weight": 0.0635,
+        "realised_weight": 0.0634,
+        "units": 127,
         "sector": "Consumer Durables"
       },
       "TMPV.NS": {
         "side": "short",
-        "target_weight": -0.0682,
+        "target_weight": -0.0684,
         "realised_weight": -0.0484,
         "units": -1,
         "sector": "Automobile"
@@ -735,28 +735,28 @@
       "DRREDDY.NS": {
         "side": "short",
         "target_weight": -0.12,
-        "realised_weight": -0.1427,
-        "units": -2,
+        "realised_weight": -0.0736,
+        "units": -1,
         "sector": "Healthcare"
       },
       "HINDUNILVR.NS": {
         "side": "short",
         "target_weight": -0.12,
-        "realised_weight": -0.1173,
+        "realised_weight": -0.1162,
         "units": -2,
         "sector": "FMCG"
       },
       "TATACONSUM.NS": {
         "side": "short",
         "target_weight": -0.12,
-        "realised_weight": -0.1108,
+        "realised_weight": -0.1094,
         "units": -2,
         "sector": "FMCG"
       },
       "WIPRO.NS": {
         "side": "short",
         "target_weight": -0.1127,
-        "realised_weight": -0.1009,
+        "realised_weight": -0.1002,
         "units": -2,
         "sector": "Information Technology"
       }
@@ -764,19 +764,19 @@
     "caps": {
       "max_position": 0.12,
       "max_sector": 0.3,
-      "max_position_used": 0.1427
+      "max_position_used": 0.1162
     },
     "liquidity_breaches": 0,
-    "min_capital_for_shorts": 7098287.0,
+    "min_capital_for_shorts": 7074518.0,
     "exports": [
       "outputs/portfolio_book.csv"
     ]
   },
   "11_portfolio_risk": {
-    "updated_at": "2026-09-09T05:21:28+00:00",
-    "signal": "1d VaR99 0.93%, CVaR99 1.08%, beta +0.05",
-    "score": 0.931,
-    "as_of": "2026-09-09",
+    "updated_at": "2026-09-11T07:19:12+00:00",
+    "signal": "1d VaR99 0.76%, CVaR99 0.91%, beta -0.00",
+    "score": 0.755,
+    "as_of": "2026-09-11",
     "capital_INR": 10000000,
     "books_evaluated": [
       "target",
@@ -784,58 +784,58 @@
     ],
     "var": {
       "0.95": {
-        "historical_%": 0.598,
-        "parametric_%": 0.667,
-        "cornish_fisher_%": 0.589,
-        "cvar_%": 0.799,
-        "historical_INR": 59760.0
+        "historical_%": 0.492,
+        "parametric_%": 0.574,
+        "cornish_fisher_%": 0.488,
+        "cvar_%": 0.652,
+        "historical_INR": 49237.0
       },
       "0.99": {
-        "historical_%": 0.931,
-        "parametric_%": 0.943,
-        "cornish_fisher_%": 0.945,
-        "cvar_%": 1.082,
-        "historical_INR": 93104.0
+        "historical_%": 0.755,
+        "parametric_%": 0.811,
+        "cornish_fisher_%": 0.791,
+        "cvar_%": 0.906,
+        "historical_INR": 75502.0
       }
     },
     "beta": {
-      "beta": 0.0455,
-      "r2": 0.0085,
+      "beta": -0.0002,
+      "r2": 0.0,
       "benchmark": "^NSEI"
     },
     "ann_vol_%": {
-      "target": 6.67,
-      "realised": 6.45
+      "target": 6.48,
+      "realised": 5.53
     },
     "risk_contribution_top3": {
-      "DRREDDY.NS": 20.8,
-      "TATACONSUM.NS": 15.6,
-      "HINDUNILVR.NS": 13.1
+      "TATACONSUM.NS": 22.5,
+      "HINDUNILVR.NS": 19.3,
+      "WIPRO.NS": 18.7
     },
-    "largest_weight": "DRREDDY.NS",
-    "largest_risk_source": "DRREDDY.NS",
+    "largest_weight": "HINDUNILVR.NS",
+    "largest_risk_source": "TATACONSUM.NS",
     "concentration": {
       "n_assets": 11.0,
-      "pc1_variance_%": 30.357,
-      "pc3_variance_%": 48.755,
-      "effective_bets_entropy": 9.059,
-      "effective_bets_herfindahl": 7.01,
+      "pc1_variance_%": 30.333,
+      "pc3_variance_%": 48.742,
+      "effective_bets_entropy": 9.06,
+      "effective_bets_herfindahl": 7.015,
       "avg_correlation": 0.23,
-      "effective_positions": 10.095
+      "effective_positions": 10.012
     },
     "crisis_replay": {
-      "GFC / Lehman": -5.0,
-      "Taper tantrum": -16.82,
-      "2018 tightening": 1.16,
-      "COVID crash": -3.62,
-      "Inflation shock": 3.43,
-      "Hiking cycle / SVB": 0.0
+      "GFC / Lehman": -2.9,
+      "Taper tantrum": -14.03,
+      "2018 tightening": 1.25,
+      "COVID crash": -1.09,
+      "Inflation shock": 3.68,
+      "Hiking cycle / SVB": 0.23
     },
     "episodes_covered": "6/6",
     "scenarios": {
-      "Crude +30%": -0.02,
-      "USDINR +5%": -0.15,
-      "US10Y +100bp": -0.61,
+      "Crude +30%": 0.1,
+      "USDINR +5%": -0.02,
+      "US10Y +100bp": -0.53,
       "Global risk-off": 0.14
     },
     "scenario_mean_r2": 0.037,
@@ -904,95 +904,95 @@
     ]
   },
   "12_factor_risk": {
-    "updated_at": "2026-09-09T20:36:38+00:00",
-    "signal": "34% systematic / 66% specific",
-    "score": 33.9,
-    "as_of": "2026-09-09",
+    "updated_at": "2026-09-11T07:19:34+00:00",
+    "signal": "33% systematic / 67% specific",
+    "score": 33.2,
+    "as_of": "2026-09-11",
     "risk_free_%": 6.25,
     "risk_free_source": "stated prior (RBI policy corridor); override per call (as of 2026-09-09)",
     "decomposition": {
-      "total_vol_%": 7.6719,
-      "systematic_vol_%": 4.4651,
-      "specific_vol_%": 6.2386,
-      "systematic_share_%": 33.8739,
-      "specific_share_%": 66.1261,
+      "total_vol_%": 6.2494,
+      "systematic_vol_%": 3.5984,
+      "specific_vol_%": 5.1094,
+      "systematic_share_%": 33.1547,
+      "specific_share_%": 66.8453,
       "n_names": 11,
       "n_factors": 6,
       "factor_cov_method": "EWMA (halflife 126 periods)"
     },
     "top_style_exposure": {
       "factor": "size",
-      "net_exposure": 0.7439
+      "net_exposure": 0.5658
     },
     "performance_excess_basis": {
-      "cagr_%": 8.7823,
-      "excess_cagr_%": 2.3834,
-      "ann_vol_%": 7.3369,
-      "sharpe": 0.3579,
-      "sortino": 0.345,
-      "calmar": 0.3244,
-      "max_drawdown_%": -7.3472,
+      "cagr_%": 7.2366,
+      "excess_cagr_%": 0.9286,
+      "ann_vol_%": 6.0859,
+      "sharpe": 0.1824,
+      "sortino": 0.1752,
+      "calmar": 0.1539,
+      "max_drawdown_%": -6.033,
       "rf_annual_%": 6.25
     },
-    "sharpe_vs_zero_overstatement": 0.8264,
+    "sharpe_vs_zero_overstatement": 0.9963,
     "benchmark_relative": {
-      "beta": 0.0785,
-      "jensen_alpha_ann_%": 2.5839,
-      "tracking_error_ann_%": 14.1975,
-      "information_ratio": 0.1476,
-      "up_capture_%": 8.1575,
-      "down_capture_%": -2.653
+      "beta": 0.0532,
+      "jensen_alpha_ann_%": 1.1059,
+      "tracking_error_ann_%": 13.9062,
+      "information_ratio": 0.0743,
+      "up_capture_%": 5.3985,
+      "down_capture_%": -3.7246
     },
-    "active_share_%": 84.9626,
+    "active_share_%": 75.719,
     "factor_model": {
       "n_factors": 6,
-      "mean_cross_sectional_r2": 0.2084,
-      "n_estimation_dates": 457,
+      "mean_cross_sectional_r2": 0.2083,
+      "n_estimation_dates": 460,
       "parameters": 71,
       "sample_parameters": 1275
     }
   },
   "13_execution_capacity": {
-    "updated_at": "2026-09-09T20:36:57+00:00",
-    "signal": "25 bps round trip | margin utilisation 4.3%",
-    "score": 25.3,
-    "as_of": "2026-09-08",
+    "updated_at": "2026-09-11T07:19:54+00:00",
+    "signal": "26 bps round trip | margin utilisation 3.9%",
+    "score": 26.5,
+    "as_of": "2026-09-11",
     "capital": 10000000,
     "costs": {
-      "weighted_avg_bps": 25.2667,
-      "total_INR": 25266.6982,
+      "weighted_avg_bps": 26.4658,
+      "total_INR": 21573.0212,
       "long_explicit_round_trip_bps": 29.3045,
-      "short_explicit_round_trip_bps": 7.3519,
+      "short_explicit_round_trip_bps": 10.3519,
       "flat_placeholder_bps": 25,
       "n_extrapolating": 0,
-      "rates_as_of": "2026-09-09"
+      "rates_as_of": "2026-09-11"
     },
     "capacity": {
       "gross_alpha_assumed_bps": 300.0,
-      "capacity_INR": 5000000.0,
-      "cost_at_1cr_bps": 303.2004,
-      "cost_at_100cr_bps": 776.0487
+      "capacity_INR": 2500000.0,
+      "cost_at_1cr_bps": 317.5901,
+      "cost_at_100cr_bps": 763.0632
     },
     "liquidity": {
       "n_adv_breach": 0,
       "p95_days_to_liquidate": 1.0,
-      "var_1d_%": 0.7372,
-      "var_liquidity_adjusted_%": 0.7372
+      "var_1d_%": 0.6056,
+      "var_liquidity_adjusted_%": 0.6056
     },
     "margin": {
-      "total_INR": 430844.8677,
-      "utilisation": 0.0431,
-      "free_cash_%": 48.4795,
+      "total_INR": 388665.9294,
+      "utilisation": 0.0389,
+      "free_cash_%": 58.27,
       "adequate": true,
-      "utilisation_at_2x_vol": 0.0686,
+      "utilisation_at_2x_vol": 0.0609,
       "basis": "SPAN approximated by scan range; ELM exact"
     }
   },
   "14_governance": {
-    "updated_at": "2026-09-09T20:37:44+00:00",
+    "updated_at": "2026-09-11T07:21:11+00:00",
     "signal": "DO NOT DEPLOY -- paper only | 0 hard breach(es) | VaR green",
     "score": 5.0,
-    "as_of": "2026-09-09",
+    "as_of": "2026-09-11",
     "stance": "DO NOT DEPLOY -- paper only",
     "verdict_source": "Technical leg: Not proven",
     "multiple_testing": {
@@ -1000,21 +1000,21 @@
       "naive_significant": 6,
       "survives_fdr": 5,
       "survives_fwer": 0,
-      "median_max_t_under_null": 1.6782,
-      "family_critical_t": 2.6864,
+      "median_max_t_under_null": 1.6688,
+      "family_critical_t": 2.6796,
       "deflated_sharpe_prob": 0.0003
     },
-    "avg_factor_correlation": 0.08,
+    "avg_factor_correlation": 0.0831,
     "bootstrap_ic": {
-      "observed_mean": -0.0368,
-      "ci_low": -0.0745,
+      "observed_mean": -0.0367,
+      "ci_low": -0.0746,
       "ci_high": 0.0037,
       "excludes_zero": false
     },
     "walk_forward": {
       "folds_positive": 1,
       "folds_total": 4,
-      "oos_mean_ic": -0.0411
+      "oos_mean_ic": -0.0412
     },
     "reality_check": {
       "best_candidate": "ret_12m_%",
@@ -1023,14 +1023,14 @@
       "verdict": "best candidate is within what the search alone produces"
     },
     "var_backtest": {
-      "ex_ante_vol_%": 6.6818,
-      "var_95_1d_%": 0.8091,
-      "cvar_95_1d_%": 1.189,
+      "ex_ante_vol_%": 5.5348,
+      "var_95_1d_%": 0.664,
+      "cvar_95_1d_%": 0.9741,
       "var_backtest_zone": "green",
-      "var_exceptions": 122,
-      "var_expected": 110.6,
-      "bias": 1.0531,
-      "worst_stress_loss_%": -2.0281
+      "var_exceptions": 119,
+      "var_expected": 110.7,
+      "bias": 1.0503,
+      "worst_stress_loss_%": -1.0917
     },
     "limits": {
       "n_limits": 13,
@@ -1039,10 +1039,11 @@
       "soft_breaches": 0,
       "not_measured": 0,
       "near_limit": [
-        "max_position_weight"
+        "max_position_weight",
+        "pct_risk_top_name"
       ]
     },
-    "run_id": "77dc11b7f0d9cf64",
-    "config_fingerprint": "909377f149627e78"
+    "run_id": "da4113493a7dc63a",
+    "config_fingerprint": "dd25346b7f4acb8b"
   }
 }
