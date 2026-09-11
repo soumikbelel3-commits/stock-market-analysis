@@ -490,15 +490,16 @@ NEUTRAL_BOOK_RF_IS_ZERO = True
 #
 #   * the long leg is cash-market delivery: STT on BOTH sides at 0.10%, stamp
 #     duty on the buy;
-#   * the short leg is stock futures: STT on the SELL only at 0.02%, a lower
-#     exchange charge, and stamp duty on the buy.
+#   * the short leg is stock futures: STT on the SELL only at 0.05% (raised from
+#     0.02% by Union Budget 2026, effective 1 April 2026), a lower exchange
+#     charge, and stamp duty on the buy.
 #
 # Netting those into one 25bps figure hides that the short leg's statutory cost
-# is roughly a fifth of the long leg's, which changes where turnover is worth
+# is roughly a third of the long leg's, which changes where turnover is worth
 # spending. Rates below are statutory as of COST_ASOF and must be re-checked
 # against the current SEBI/exchange circulars; brokerage is the only negotiable
 # line and is set at an institutional level, not a retail one.
-COST_ASOF = "2026-09-09"
+COST_ASOF = "2026-09-11"
 COST_RATES = {
     # every rate is a FRACTION of the traded value unless stated otherwise
     "cash_delivery": {
@@ -514,7 +515,7 @@ COST_RATES = {
     "stock_futures": {
         "brokerage":        0.00020,   # 2bps
         "stt_buy":          0.0,
-        "stt_sell":         0.00020,   # 0.02%, sell side only
+        "stt_sell":         0.00050,   # 0.05%, sell side only (Budget 2026; was 0.02%)
         "exchange_txn":     0.0000173, # NSE F&O segment
         "sebi_fee":         0.000001,
         "stamp_buy":        0.00002,   # 0.002%, buy side only
@@ -572,9 +573,13 @@ BOOTSTRAP_BLOCK = 6               # stationary-bootstrap mean block, in rebalanc
 # worst-case scanned loss over a price grid, and ELM is a flat add-on. Both are
 # labelled approximations everywhere they surface, and the regulatory floor is
 # applied because that is what actually binds on a low-vol name.
+#
+# Read the result as a FLOOR. Broker-quoted initial margin on single-stock futures
+# commonly runs well above this proxy's ~8-9% of notional; size cash against the
+# broker's SPAN figure before trading.
 SPAN_SCAN_RANGE_SIGMA = 3.5       # price scan range, in daily sigmas
 SPAN_MIN_SCAN_PCT = 0.05          # floor on the scan range
-ELM_PCT = 0.03                    # extreme loss margin, flat on notional
+ELM_PCT = 0.035                   # extreme loss margin, flat on notional (stock futures: 3.5%)
 MARGIN_MTM_BUFFER_DAYS = 3        # cash held back against mark-to-market calls
 MARGIN_UTILISATION_LIMIT = 0.65   # of deployable capital; above this a call bites
 

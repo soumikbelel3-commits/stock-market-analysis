@@ -313,12 +313,15 @@ def ic_memo(book: pd.DataFrame | None = None,
     # ---------------------------------------------- 5. costs and implementation
     a("## 5. Costs, capacity and capital\n")
     if cost_table is not None and len(cost_table):
+        from . import costs
+        leg_ratio = (costs.round_trip_bps(costs.CASH)
+                     / costs.round_trip_bps(costs.FUT, is_short=True))
         a(f"- All-in round trip, weighted **"
           f"{_fmt(cost_table.attrs.get('weighted_avg_bps'), '.1f')} bps** "
           f"= {_inr(cost_table.attrs.get('total_INR'))} on this book\n"
           f"- Long leg is cash delivery (STT both sides); short leg is futures "
-          f"(STT on the sell only) -- the statutory cost of the two legs differs "
-          f"by roughly 4x\n")
+          f"(STT on the sell only) -- the explicit cost of the two legs differs "
+          f"by {leg_ratio:.1f}x\n")
         if cost_table.attrs.get("n_extrapolating", 0):
             a(f"- **{cost_table.attrs['n_extrapolating']} position(s) exceed the "
               f"participation rate the impact model was calibrated on** -- their "

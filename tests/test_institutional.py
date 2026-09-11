@@ -163,13 +163,14 @@ def test_short_leg_statutory_cost_is_far_below_the_long_leg():
     """The asymmetry a flat round-trip number hides."""
     long_rt = costs.round_trip_bps(costs.CASH, is_short=False)
     short_rt = costs.round_trip_bps(costs.FUT, is_short=True)
-    assert long_rt > 3 * short_rt, (long_rt, short_rt)
-    # STT dominates and is charged both ways on cash, one way on futures.
+    assert long_rt > 2.5 * short_rt, (long_rt, short_rt)
+    # STT dominates and is charged both ways on cash, one way on futures
+    # (0.05% on the futures sell since Budget 2026; it was 0.02%).
     stt_cash = (costs.explicit_bps(costs.CASH, "buy")["stt"]
                 + costs.explicit_bps(costs.CASH, "sell")["stt"])
     stt_fut = (costs.explicit_bps(costs.FUT, "buy")["stt"]
                + costs.explicit_bps(costs.FUT, "sell")["stt"])
-    assert stt_cash == 20.0 and stt_fut == 2.0, (stt_cash, stt_fut)
+    assert abs(stt_cash - 20.0) < 1e-9 and abs(stt_fut - 5.0) < 1e-9, (stt_cash, stt_fut)
     print(f"  costs     long round trip {long_rt:.2f}bps vs short {short_rt:.2f}bps "
           f"({long_rt / short_rt:.1f}x); STT {stt_cash:.0f} vs {stt_fut:.0f}bps")
 

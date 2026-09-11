@@ -475,7 +475,8 @@ def lot_table(tickers: Iterable[str], live: pd.Series | None = None) -> pd.DataF
 
 
 def quantize_to_lots(book: pd.DataFrame, prices: pd.Series, lots: pd.Series,
-                     capital: float = config.DEFAULT_CAPITAL) -> pd.DataFrame:
+                     capital: float = config.DEFAULT_CAPITAL,
+                     max_pos: float | None = config.MAX_POSITION_WEIGHT) -> pd.DataFrame:
     """Round target weights to what can actually be traded.
 
     The two sides quantise differently, and conflating them overstates the
@@ -485,6 +486,11 @@ def quantize_to_lots(book: pd.DataFrame, prices: pd.Series, lots: pd.Series,
       negligible;
     * **shorts** must be stock futures and trade in *whole lots*, so the
       rounding is first-order at a retail-sized book.
+
+    Rounding is to the nearest unit, except that it never rounds *up* through
+    ``max_pos``: a position that would breach the cap steps back one unit at a
+    time and is listed in ``attrs['cap_limited']``. Pass ``max_pos=None`` for
+    plain nearest-unit rounding.
 
     Returns target vs realised weight per name, so the tracking error rounding
     introduces is a number in a table rather than an assumption.
@@ -512,8 +518,21 @@ def quantize_to_lots(book: pd.DataFrame, prices: pd.Series, lots: pd.Series,
 
         target_units = target_value / unit_value
         units = float(np.round(target_units))
-        # Never round a wanted position all the way to nothing without saying so.
         note = ""
+        # Nearest-lot rounding can round up straight through the cap: 1.68 lots
+        # of a 7.1%-of-capital future is a 12% target and a 14.3% position.
+        if max_pos is not None:
+            # Rounding must not push a position past the cap; a target that is
+            # already over it is a sizing decision made upstream, not ours to cut.
+            limit = max(max_pos * capital, abs(target_value)) + 1e-6
+            stepped = 0
+            while units != 0 and abs(units) * unit_value > limit:
+                units -= np.sign(units)
+                stepped += 1
+            if stepped:
+                note = (f"rounded down {stepped} unit(s) to respect the "
+                        f"{max_pos:.0%} position cap")
+        # Never round a wanted position all the way to nothing without saying so.
         if units == 0 and abs(target_units) > 0:
             note = (f"rounds to zero -- one unit is "
                     f"{unit_value / capital * 100:.2f}% of capital")
@@ -537,7 +556,71 @@ def quantize_to_lots(book: pd.DataFrame, prices: pd.Series, lots: pd.Series,
         np.sqrt((out["weight_error_pp"].dropna() ** 2).sum()))
     out.attrs["dropped_to_zero"] = [t for t, r in out.iterrows()
                                     if r["units"] == 0 and abs(r["target_weight"]) > 0]
+    out.attrs["cap_limited"] = [t for t, r in out.iterrows()
+                                if str(r["note"]).startswith("rounded down")]
+    out.attrs["max_pos"] = max_pos
     return out
+
+
+def rematch_long_leg(book: pd.DataFrame, prices: pd.Series, lots: pd.Series,
+                     betas: pd.Series, capital: float = config.DEFAULT_CAPITAL,
+                     max_pos: float = config.MAX_POSITION_WEIGHT,
+                     gross: float | None = None) -> pd.DataFrame:
+    """Quantise the book, then re-size the long leg to the short leg *as traded*.
+
+    Beta neutrality is solved on continuous weights, and the short leg then
+    rounds to whole futures lots, so the legs stop cancelling. The short leg
+    cannot be fine-tuned; the long leg buys in single shares and can. Every long
+    is scaled by one factor so the long leg's beta contribution matches the
+    short leg's *realised* one.
+
+    The scale is bounded by the position cap and, when given, the ``gross``
+    budget, so neutrality is never bought with a breach. Which bound bound is in
+    ``attrs['long_scale_bound']``, and the residual beta in
+    ``attrs['realised_net_beta']``.
+
+    In the result ``target_weight`` is the rescaled long target, so
+    ``weight_error_pp`` stays a pure rounding error; what construction asked for
+    before rematching is kept as ``construction_weight``.
+    """
+    q0 = quantize_to_lots(book, prices, lots, capital=capital, max_pos=max_pos)
+    b = pd.to_numeric(betas.reindex(book.index), errors="coerce")
+    is_long = book["side"] == "long"
+    is_short = book["side"] == "short"
+    construction = book["weight"].astype(float)
+
+    long_w = construction[is_long]
+    long_beta = float((long_w * b[is_long]).sum())
+    short_real = q0.loc[is_short, "realised_weight"].abs()
+    short_beta = float((short_real * b[is_short]).sum())
+
+    if long_w.empty or not (np.isfinite(long_beta) and long_beta > 0):
+        q0["construction_weight"] = construction
+        q0.attrs.update({"long_scale": 1.0, "required_long_scale": np.nan,
+                         "long_scale_bound": "long-leg beta unusable",
+                         "construction_net_beta": float((construction * b).sum()),
+                         "realised_net_beta": float((q0["realised_weight"] * b).sum())})
+        return q0
+
+    bounds = {"beta match": short_beta / long_beta,
+              "position cap": max_pos / float(long_w.max())}
+    if gross is not None:
+        bounds["gross budget"] = max(gross - float(short_real.sum()), 0.0) / float(long_w.sum())
+    binding = min(bounds, key=bounds.get)
+    scale = float(bounds[binding])
+
+    rescaled = book.copy()
+    rescaled.loc[is_long, "weight"] = long_w * scale
+    q = quantize_to_lots(rescaled, prices, lots, capital=capital, max_pos=max_pos)
+    q["construction_weight"] = construction
+    q.attrs.update({
+        "long_scale": scale,
+        "required_long_scale": float(bounds["beta match"]),
+        "long_scale_bound": binding,
+        "construction_net_beta": float((construction * b).sum()),
+        "realised_net_beta": float((q["realised_weight"] * b).sum()),
+    })
+    return q
 
 
 def assert_implementable(book: pd.DataFrame, prices: pd.Series, lots: pd.Series,
