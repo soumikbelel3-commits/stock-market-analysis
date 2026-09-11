@@ -1,0 +1,22 @@
+data/cache/
+*.parquet
+*.pkl
+*.meta.json
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+outputs/charts/*.png
+
+# Institutional layer outputs.
+# `run_manifest.json` is per-run and machine-specific (absolute cache paths,
+# content hashes); regenerate it rather than committing it.
+outputs/run_manifest.json
+
+# NOT ignored, deliberately, and the reason is the same one that keeps
+# fii_dii_history.csv out of data/cache/:
+#   outputs/breach_log.csv  -- the dated record of when the book was outside its
+#                              limits. It accumulates, it cannot be reconstructed,
+#                              and it is the only artefact here that answers a
+#                              question about the past.
+#   outputs/ic_memo.md      -- the deliverable; committing it makes the memo's
+#                              history reviewable alongside the code that produced it.

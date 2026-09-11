@@ -1,0 +1,1048 @@
+{
+  "01_macro": {
+    "updated_at": "2026-09-09T05:15:44+00:00",
+    "signal": "Goldilocks (growth, cooling prices) | nowcast: Mixed",
+    "score": 0.0,
+    "as_of": "2026-09-09",
+    "structural": {
+      "year": 2025,
+      "india_gdp_growth_%": 7.5667,
+      "india_cpi_%": 2.3988,
+      "regime": "Goldilocks (growth, cooling prices)"
+    },
+    "nowcast": {
+      "copper/gold": 1.0,
+      "dollar (inv)": -0.0,
+      "crude (inv)": -1.0,
+      "USDINR (inv)": -0.0,
+      "label": "Mixed",
+      "mean": 0.0
+    },
+    "transmission": {
+      "US Dollar Index": {
+        "level": 98.737,
+        "as_of": "2026-09-09",
+        "chg_1y_%": 0.97
+      },
+      "WTI Crude": {
+        "level": 94.03,
+        "as_of": "2026-09-09",
+        "chg_1y_%": 50.14
+      },
+      "Brent Crude": {
+        "level": 99.07,
+        "as_of": "2026-09-09",
+        "chg_1y_%": 49.22
+      },
+      "Gold": {
+        "level": 4425.5,
+        "as_of": "2026-09-09",
+        "chg_1y_%": 21.47
+      },
+      "Copper": {
+        "level": 6.7655,
+        "as_of": "2026-09-09",
+        "chg_1y_%": 50.31
+      },
+      "Natural Gas": {
+        "level": 2.881,
+        "as_of": "2026-09-09",
+        "chg_1y_%": -7.57
+      },
+      "USDINR": {
+        "level": 94.4919,
+        "as_of": "2026-09-08",
+        "chg_1y_%": 7.15
+      }
+    },
+    "copper_gold_pctile_10y": 17.6,
+    "sources_ok": "8/8"
+  },
+  "_chain": [
+    "01_macro",
+    "02_risk",
+    "03_rates",
+    "04_global_equity",
+    "05_india_market",
+    "06_india_companies",
+    "07_signal_validation",
+    "08_earnings_quality",
+    "09_positioning",
+    "10_portfolio",
+    "11_portfolio_risk",
+    "12_factor_risk",
+    "13_execution_capacity",
+    "14_governance"
+  ],
+  "02_risk": {
+    "updated_at": "2026-09-09T05:16:16+00:00",
+    "signal": "Neutral",
+    "score": -0.1,
+    "as_of": "2026-09-08",
+    "components": {
+      "VIX": 0.397,
+      "MOVE": 0.134,
+      "OVX": -0.397,
+      "SKEW": -1.026,
+      "gold/copper": -0.959,
+      "HY vs IG": 1.25
+    },
+    "vol_percentiles": {
+      "VIX (equity vol)": 39.1,
+      "MOVE (bond vol)": 54.9,
+      "OVX (oil vol)": 82.4,
+      "SKEW (tail risk)": 85.4,
+      "VVIX (vol of vol)": 26.1
+    },
+    "vol_levels": {
+      "VIX (equity vol)": 15.72,
+      "MOVE (bond vol)": 76.14,
+      "OVX (oil vol)": 48.59,
+      "SKEW (tail risk)": 148.86,
+      "VVIX (vol of vol)": 88.69
+    },
+    "avg_pairwise_corr": 0.161,
+    "drawdowns_%": {
+      "US 20y+ Treasuries": -52.09,
+      "Bitcoin": -36.58,
+      "US High Yield": -25.42,
+      "US Investment Grade": -24.2,
+      "Gold": -17.38,
+      "US Dollar Index": -13.38,
+      "S&P 500": -1.61,
+      "Copper": 0.0
+    },
+    "nan_rate_naive_%": 19.52,
+    "nan_rate_aligned_%": 0.0
+  },
+  "03_rates": {
+    "updated_at": "2026-09-09T05:16:41+00:00",
+    "signal": "Cautious on duration",
+    "score": -0.27,
+    "as_of": "2026-09-08",
+    "regime": "10Y rising, curve flat, normal rate vol",
+    "us_curve": {
+      "1 Mo": 3.81,
+      "1.5 Month": 3.88,
+      "2 Mo": 3.91,
+      "3 Mo": 3.94,
+      "4 Mo": 4.02,
+      "6 Mo": 4.0,
+      "1 Yr": 4.15,
+      "2 Yr": 4.39,
+      "3 Yr": 4.44,
+      "5 Yr": 4.57,
+      "7 Yr": 4.68,
+      "10 Yr": 4.8,
+      "20 Yr": 5.26,
+      "30 Yr": 5.25
+    },
+    "us_10y_%": 4.8,
+    "slopes_bp": {
+      "2s10s": 41.0,
+      "3m10y": 86.0,
+      "10s30s": 45.0,
+      "5s30s": 68.0
+    },
+    "inverted_2s10s": false,
+    "chg_3m_bp": {
+      "level": 27.0,
+      "2s10s": 1.0
+    },
+    "pca_variance_%": {
+      "PC1": 81.0,
+      "PC2": 11.2,
+      "PC3": 4.1
+    },
+    "move": {
+      "level": 76.14,
+      "pctile_10y": 55.3,
+      "regime": "Normal rate vol"
+    },
+    "india_implied_dy_bp": {
+      "30d": null,
+      "1y": null,
+      "method": "clean-price index / modified duration; CHANGE not level"
+    },
+    "usdinr": 94.492
+  },
+  "04_global_equity": {
+    "updated_at": "2026-09-09T05:17:20+00:00",
+    "signal": "India lagging the world",
+    "score": -39.12,
+    "as_of": "2026-09-09",
+    "india_1y_%": -5.6,
+    "world_ex_india_1y_%": 33.52,
+    "excess_1y_pp": -39.12,
+    "markets_beaten": "1/13",
+    "returns_1y_%": {
+      "S&P 500": 18.14,
+      "Nasdaq 100": 24.18,
+      "Russell 2000": 23.6,
+      "DAX": 9.24,
+      "FTSE 100": 17.25,
+      "Euro Stoxx 50": 19.59,
+      "Nikkei 225": 50.02,
+      "Hang Seng": -2.42,
+      "Shanghai Composite": 3.74,
+      "KOSPI": 116.76,
+      "Taiwan Weighted": 90.01,
+      "Bovespa": 32.14,
+      "Nifty 50": -5.6,
+      "Sensex": -7.4
+    },
+    "drawdown_%": {
+      "Shanghai Composite": -35.17,
+      "Hang Seng": -23.66,
+      "KOSPI": -22.47,
+      "Sensex": -12.51,
+      "Nifty 50": -10.83,
+      "Nikkei 225": -9.91,
+      "Bovespa": -5.68,
+      "Nasdaq 100": -3.76,
+      "Russell 2000": -3.53,
+      "DAX": -2.12,
+      "Euro Stoxx 50": -2.11,
+      "S&P 500": -1.61,
+      "Taiwan Weighted": -1.08,
+      "FTSE 100": -0.91
+    },
+    "avg_pairwise_corr": 0.276,
+    "india_corr_with_world": 0.283,
+    "dispersion_now_%": 5.68,
+    "rs_rank_top3": [
+      "KOSPI",
+      "Taiwan Weighted",
+      "Nikkei 225"
+    ],
+    "dropped_tickers": []
+  },
+  "05_india_market": {
+    "updated_at": "2026-09-09T05:18:10+00:00",
+    "signal": "Mixed",
+    "score": 0.232,
+    "as_of": "2026-09-09 10:41:00",
+    "nifty": {
+      "level": 23505.8,
+      "chg_30d_%": -4.33,
+      "chg_365d_%": -5.48,
+      "pe": 19.98,
+      "pb": 2.86,
+      "dy": 1.2
+    },
+    "breadth": {
+      "above 20DMA": 22.0,
+      "above 50DMA": 28.0,
+      "above 200DMA": 40.0,
+      "average_%": 30.0,
+      "constituents_used": 50
+    },
+    "india_vix": {
+      "level": 11.69,
+      "pct_of_52w_range": 14.7,
+      "regime": "Complacent"
+    },
+    "flows_latest": {
+      "date": "2026-09-08",
+      "FII_net_cr": -123.19,
+      "DII_net_cr": 1349.64,
+      "history_days": 2,
+      "note": "NSE publishes latest session only; history accumulates per run"
+    },
+    "sector_leaders": [
+      "METAL",
+      "MIDSMALL FINANCIAL SERVICES",
+      "PSU BANK",
+      "ENERGY",
+      "PHARMA"
+    ],
+    "sector_laggards": [
+      "INDIA RAILWAYS PSU",
+      "IT",
+      "FMCG"
+    ],
+    "sector_scores": {
+      "METAL": 5.571,
+      "MIDSMALL FINANCIAL SERVICES": 4.493,
+      "PSU BANK": 3.717,
+      "ENERGY": 3.537,
+      "PHARMA": 3.39,
+      "CPSE": 3.194,
+      "INDIA DEFENCE": 3.052,
+      "COMMODITIES": 2.396,
+      "PSE": 2.395,
+      "MIDSMALL HEALTHCARE": 2.154,
+      "MIDSMALL IT & TELECOM": 2.045,
+      "HEALTHCARE INDEX": 1.521,
+      "OIL & GAS": 1.206,
+      "PRIVATE BANK": 1.178,
+      "FINANCIAL SERVICES EX-BANK": 1.05,
+      "INDIA MANUFACTURING": 0.891,
+      "REITS & REALTY": 0.158,
+      "HOUSING": -0.025,
+      "INFRASTRUCTURE": -0.248,
+      "REALTY": -0.369,
+      "MNC": -0.499,
+      "INDIA DIGITAL": -0.715,
+      "FINANCIAL SERVICES 25/50": -0.767,
+      "NIFTY500 HEALTHCARE": -0.839,
+      "CHEMICALS": -0.983,
+      "AUTO": -2.016,
+      "MEDIA": -2.174,
+      "TRANSPORTATION & LOGISTICS": -2.442,
+      "CEMENT": -2.521,
+      "CONSUMER DURABLES": -2.81,
+      "INDIA CONSUMPTION": -3.44,
+      "INDIA RAILWAYS PSU": -3.892,
+      "IT": -4.144,
+      "FMCG": -5.815
+    },
+    "quadrants": {
+      "Leading": 24,
+      "Weakening": 5,
+      "Lagging": 4,
+      "Improving": 1
+    },
+    "dropped_constituents": []
+  },
+  "06_india_companies": {
+    "updated_at": "2026-09-09T05:19:06+00:00",
+    "signal": "Top 8 of 50 screened, 6 sectors",
+    "score": 80.75,
+    "as_of": "2026-09-09",
+    "weighting": {
+      "fundamental": 0.5,
+      "technical": 0.5
+    },
+    "universe_configured": 50,
+    "universe_scored": 50,
+    "dropped": [],
+    "top": {
+      "BAJAJ-AUTO.NS": {
+        "rank": 1,
+        "sector": "Automobile",
+        "composite": 89.0,
+        "fund_pct": 82.0,
+        "tech_pct": 96.0,
+        "close": 11858.0,
+        "ATR14": 213.0,
+        "ATR_%": 1.8,
+        "stop_2atr": 11432.0,
+        "target_3atr": 12497.0,
+        "swing_high_60d": 12470.0,
+        "swing_low_60d": 9501.0,
+        "RSI14": 54.8,
+        "px_vs_DMA200_%": 17.95,
+        "PE": 28.16,
+        "ROE_%": 29.03
+      },
+      "KOTAKBANK.NS": {
+        "rank": 2,
+        "sector": "Financial Services",
+        "composite": 84.0,
+        "fund_pct": 80.0,
+        "tech_pct": 88.0,
+        "close": 414.85,
+        "ATR14": 7.14,
+        "ATR_%": 1.72,
+        "stop_2atr": 400.56,
+        "target_3atr": 436.28,
+        "swing_high_60d": 429.1,
+        "swing_low_60d": 368.4,
+        "RSI14": 56.8,
+        "px_vs_DMA200_%": 3.57,
+        "PE": 20.33,
+        "ROE_%": 11.39
+      },
+      "COALINDIA.NS": {
+        "rank": 3,
+        "sector": "Oil Gas & Fuels",
+        "composite": 82.0,
+        "fund_pct": 86.0,
+        "tech_pct": 78.0,
+        "close": 434.0,
+        "ATR14": 8.16,
+        "ATR_%": 1.88,
+        "stop_2atr": 417.68,
+        "target_3atr": 458.47,
+        "swing_high_60d": 457.5,
+        "swing_low_60d": 395.8,
+        "RSI14": 69.4,
+        "px_vs_DMA200_%": 0.78,
+        "PE": 7.5,
+        "ROE_%": 28.16
+      },
+      "ADANIPORTS.NS": {
+        "rank": 4,
+        "sector": "Services",
+        "composite": 82.0,
+        "fund_pct": 78.0,
+        "tech_pct": 86.0,
+        "close": 1754.9,
+        "ATR14": 37.78,
+        "ATR_%": 2.15,
+        "stop_2atr": 1679.33,
+        "target_3atr": 1868.25,
+        "swing_high_60d": 1891.1,
+        "swing_low_60d": 1593.1,
+        "RSI14": 58.2,
+        "px_vs_DMA200_%": 8.97,
+        "PE": 30.36,
+        "ROE_%": 16.15
+      },
+      "ICICIBANK.NS": {
+        "rank": 5,
+        "sector": "Financial Services",
+        "composite": 78.0,
+        "fund_pct": 84.0,
+        "tech_pct": 72.0,
+        "close": 1391.2,
+        "ATR14": 21.25,
+        "ATR_%": 1.53,
+        "stop_2atr": 1348.69,
+        "target_3atr": 1454.96,
+        "swing_high_60d": 1480.0,
+        "swing_low_60d": 1331.4,
+        "RSI14": 40.1,
+        "px_vs_DMA200_%": 2.59,
+        "PE": 17.76,
+        "ROE_%": 16.01
+      },
+      "JSWSTEEL.NS": {
+        "rank": 6,
+        "sector": "Metals & Mining",
+        "composite": 78.0,
+        "fund_pct": 74.0,
+        "tech_pct": 82.0,
+        "close": 1304.5,
+        "ATR14": 24.63,
+        "ATR_%": 1.89,
+        "stop_2atr": 1255.24,
+        "target_3atr": 1378.39,
+        "swing_high_60d": 1351.0,
+        "swing_low_60d": 1210.7,
+        "RSI14": 51.5,
+        "px_vs_DMA200_%": 6.21,
+        "PE": 12.56,
+        "ROE_%": 24.86
+      },
+      "TITAN.NS": {
+        "rank": 7,
+        "sector": "Consumer Durables",
+        "composite": 77.0,
+        "fund_pct": 56.0,
+        "tech_pct": 98.0,
+        "close": 4991.0,
+        "ATR14": 79.66,
+        "ATR_%": 1.6,
+        "stop_2atr": 4831.69,
+        "target_3atr": 5229.97,
+        "swing_high_60d": 5186.7,
+        "swing_low_60d": 4225.0,
+        "RSI14": 49.1,
+        "px_vs_DMA200_%": 15.22,
+        "PE": 77.25,
+        "ROE_%": 37.13
+      },
+      "EICHERMOT.NS": {
+        "rank": 8,
+        "sector": "Automobile",
+        "composite": 76.0,
+        "fund_pct": 88.0,
+        "tech_pct": 64.0,
+        "close": 7694.0,
+        "ATR14": 146.61,
+        "ATR_%": 1.91,
+        "stop_2atr": 7400.77,
+        "target_3atr": 8133.84,
+        "swing_high_60d": 8165.0,
+        "swing_low_60d": 6942.5,
+        "RSI14": 39.4,
+        "px_vs_DMA200_%": 4.14,
+        "PE": 36.56,
+        "ROE_%": 23.77
+      }
+    },
+    "provenance_computed_%": 96.7,
+    "exports": [
+      "outputs/nifty50_screen.csv"
+    ]
+  },
+  "07_signal_validation": {
+    "updated_at": "2026-09-09T05:23:04+00:00",
+    "signal": "Technical leg: Not proven",
+    "score": -1.62,
+    "as_of": "2026-09-09",
+    "universe": 50,
+    "period": "10y",
+    "rebalances": 109,
+    "ic_by_horizon": {
+      "21": {
+        "mean_ic": -0.0368,
+        "t_stat": -1.62,
+        "se_method": "iid"
+      },
+      "63": {
+        "mean_ic": -0.0246,
+        "t_stat": -0.953,
+        "se_method": "Newey-West"
+      },
+      "126": {
+        "mean_ic": 0.0204,
+        "t_stat": 0.545,
+        "se_method": "Newey-West"
+      }
+    },
+    "quintile_spread_pp": -0.786,
+    "quintile_monotone": false,
+    "long_short": {
+      "n_periods": 108.0,
+      "years": 9.0,
+      "cagr_net_%": -8.422,
+      "mean_period_gross_%": -0.394,
+      "mean_period_net_%": -0.609,
+      "vol_ann_%": 17.067,
+      "sharpe_net": -0.428,
+      "hit_rate_%": 42.593,
+      "max_dd_%": -54.386,
+      "avg_turnover": 0.867,
+      "cost_drag_ann_%": 2.581
+    },
+    "factor_ic_top3": {
+      "ret_12m_%": 0.45,
+      "vol_trend_%": 0.07,
+      "px_vs_DMA200_%": -0.86
+    },
+    "factor_ic_bottom3": {
+      "px_vs_DMA50_%": -2.33,
+      "px_vs_DMA20_%": -2.56,
+      "RSI14": -2.76
+    },
+    "regime_conditional": {
+      "Neutral": -0.043,
+      "Risk-Off": -0.023,
+      "Risk-On": -0.003
+    },
+    "control_mean_t": -0.012,
+    "trap4_spurious_fundamental_ic": -0.088,
+    "fundamental_leg": "not backtested -- no point-in-time statements exist (trap #4)"
+  },
+  "08_earnings_quality": {
+    "updated_at": "2026-09-09T05:20:28+00:00",
+    "signal": "7 do-not-own, 8 short candidates, 43 names pass",
+    "score": 51.32,
+    "as_of": "2026-03-31",
+    "universe": 50,
+    "non_financials_scored": 38,
+    "financials_excluded": 12,
+    "coverage_%": {
+      "piotroski_f": 100.0,
+      "altman_z": 100.0,
+      "beneish_m": 100.0,
+      "accruals_ratio": 100.0
+    },
+    "do_not_own": {
+      "BAJAJ-AUTO.NS": [
+        "Beneish M -1.69 -- above the manipulation threshold",
+        "accruals +12.4% of assets -- earnings ahead of cash"
+      ],
+      "BEL.NS": [
+        "Beneish M -1.68 -- above the manipulation threshold",
+        "accruals +10.6% of assets -- earnings ahead of cash"
+      ],
+      "CIPLA.NS": [
+        "Piotroski 3/9 -- fundamentals deteriorating"
+      ],
+      "DRREDDY.NS": [
+        "Piotroski 3/9 -- fundamentals deteriorating"
+      ],
+      "ETERNAL.NS": [
+        "Beneish M -1.47 -- above the manipulation threshold"
+      ],
+      "POWERGRID.NS": [
+        "Piotroski 3/9 -- fundamentals deteriorating"
+      ],
+      "TMPV.NS": [
+        "Piotroski 3/9 -- fundamentals deteriorating",
+        "Beneish M -1.55 -- above the manipulation threshold",
+        "accruals +18.2% of assets -- earnings ahead of cash"
+      ]
+    },
+    "short_candidates": {
+      "TMPV.NS": {
+        "rank": 1,
+        "sector": "Automobile",
+        "short_score": 93.3,
+        "quality_score": 5.6,
+        "composite": 26.0,
+        "piotroski_f": 3.0,
+        "beneish_m": -1.55
+      },
+      "DRREDDY.NS": {
+        "rank": 2,
+        "sector": "Healthcare",
+        "short_score": 74.5,
+        "quality_score": 47.0,
+        "composite": 16.0,
+        "piotroski_f": 3.0,
+        "beneish_m": -2.52
+      },
+      "HINDUNILVR.NS": {
+        "rank": 3,
+        "sector": "FMCG",
+        "short_score": 73.4,
+        "quality_score": 32.2,
+        "composite": 35.0,
+        "piotroski_f": 5.0,
+        "beneish_m": -2.3
+      },
+      "TATACONSUM.NS": {
+        "rank": 4,
+        "sector": "FMCG",
+        "short_score": 72.5,
+        "quality_score": 51.0,
+        "composite": 16.0,
+        "piotroski_f": 6.0,
+        "beneish_m": -2.32
+      },
+      "WIPRO.NS": {
+        "rank": 5,
+        "sector": "Information Technology",
+        "short_score": 72.5,
+        "quality_score": 44.4,
+        "composite": 27.0,
+        "piotroski_f": 4.0,
+        "beneish_m": -2.34
+      },
+      "GRASIM.NS": {
+        "rank": 6,
+        "sector": "Construction Materials",
+        "short_score": 67.8,
+        "quality_score": 18.4,
+        "composite": 47.0,
+        "piotroski_f": 5.0,
+        "beneish_m": -2.14
+      },
+      "M&M.NS": {
+        "rank": 7,
+        "sector": "Automobile",
+        "short_score": 67.1,
+        "quality_score": 31.6,
+        "composite": 41.0,
+        "piotroski_f": 5.0,
+        "beneish_m": -2.25
+      },
+      "POWERGRID.NS": {
+        "rank": 8,
+        "sector": "Power",
+        "short_score": 65.3,
+        "quality_score": 40.5,
+        "composite": 39.0,
+        "piotroski_f": 3.0,
+        "beneish_m": -2.45
+      }
+    },
+    "beneish_flags": {
+      "clean": 31,
+      "manipulation-flag": 4,
+      "watch": 3
+    },
+    "altman_zones": {
+      "safe": 38
+    },
+    "quality_vs_composite_spearman": 0.033,
+    "single_cross_section_ic": -0.113,
+    "in_sample_only": "forensic scores come from current statements -- trap #4 applies, no backtest is possible",
+    "exports": [
+      "outputs/nifty50_screen_filtered.csv"
+    ]
+  },
+  "10_portfolio": {
+    "updated_at": "2026-09-09T05:21:07+00:00",
+    "signal": "6L / 5S, gross 0.98x, net -0.06x",
+    "score": 6.44,
+    "as_of": "2026-09-09",
+    "capital_INR": 10000000,
+    "scheme": "risk_parity",
+    "neutrality": "beta-neutral",
+    "gross_regime": {
+      "gross": 1.0,
+      "rationale": "notebook 02 risk regime = Neutral; macro nowcast Mixed (no adjustment)"
+    },
+    "target": {
+      "gross": 1.0,
+      "net": -0.0819,
+      "vol_%": 6.69,
+      "vol_target_%": 12.0
+    },
+    "realised": {
+      "gross": 0.9793,
+      "net": -0.061,
+      "vol_%": 6.44
+    },
+    "tracking_error_pp": 3.372,
+    "lot_source": "live",
+    "positions": {
+      "KOTAKBANK.NS": {
+        "side": "long",
+        "target_weight": 0.0781,
+        "realised_weight": 0.078,
+        "units": 1881,
+        "sector": "Financial Services"
+      },
+      "COALINDIA.NS": {
+        "side": "long",
+        "target_weight": 0.0858,
+        "realised_weight": 0.0858,
+        "units": 1976,
+        "sector": "Oil Gas & Fuels"
+      },
+      "ADANIPORTS.NS": {
+        "side": "long",
+        "target_weight": 0.0549,
+        "realised_weight": 0.0549,
+        "units": 313,
+        "sector": "Services"
+      },
+      "ICICIBANK.NS": {
+        "side": "long",
+        "target_weight": 0.0935,
+        "realised_weight": 0.0935,
+        "units": 672,
+        "sector": "Financial Services"
+      },
+      "JSWSTEEL.NS": {
+        "side": "long",
+        "target_weight": 0.0676,
+        "realised_weight": 0.0676,
+        "units": 518,
+        "sector": "Metals & Mining"
+      },
+      "TITAN.NS": {
+        "side": "long",
+        "target_weight": 0.0793,
+        "realised_weight": 0.0794,
+        "units": 159,
+        "sector": "Consumer Durables"
+      },
+      "TMPV.NS": {
+        "side": "short",
+        "target_weight": -0.0682,
+        "realised_weight": -0.0484,
+        "units": -1,
+        "sector": "Automobile"
+      },
+      "DRREDDY.NS": {
+        "side": "short",
+        "target_weight": -0.12,
+        "realised_weight": -0.1427,
+        "units": -2,
+        "sector": "Healthcare"
+      },
+      "HINDUNILVR.NS": {
+        "side": "short",
+        "target_weight": -0.12,
+        "realised_weight": -0.1173,
+        "units": -2,
+        "sector": "FMCG"
+      },
+      "TATACONSUM.NS": {
+        "side": "short",
+        "target_weight": -0.12,
+        "realised_weight": -0.1108,
+        "units": -2,
+        "sector": "FMCG"
+      },
+      "WIPRO.NS": {
+        "side": "short",
+        "target_weight": -0.1127,
+        "realised_weight": -0.1009,
+        "units": -2,
+        "sector": "Information Technology"
+      }
+    },
+    "caps": {
+      "max_position": 0.12,
+      "max_sector": 0.3,
+      "max_position_used": 0.1427
+    },
+    "liquidity_breaches": 0,
+    "min_capital_for_shorts": 7098287.0,
+    "exports": [
+      "outputs/portfolio_book.csv"
+    ]
+  },
+  "11_portfolio_risk": {
+    "updated_at": "2026-09-09T05:21:28+00:00",
+    "signal": "1d VaR99 0.93%, CVaR99 1.08%, beta +0.05",
+    "score": 0.931,
+    "as_of": "2026-09-09",
+    "capital_INR": 10000000,
+    "books_evaluated": [
+      "target",
+      "realised"
+    ],
+    "var": {
+      "0.95": {
+        "historical_%": 0.598,
+        "parametric_%": 0.667,
+        "cornish_fisher_%": 0.589,
+        "cvar_%": 0.799,
+        "historical_INR": 59760.0
+      },
+      "0.99": {
+        "historical_%": 0.931,
+        "parametric_%": 0.943,
+        "cornish_fisher_%": 0.945,
+        "cvar_%": 1.082,
+        "historical_INR": 93104.0
+      }
+    },
+    "beta": {
+      "beta": 0.0455,
+      "r2": 0.0085,
+      "benchmark": "^NSEI"
+    },
+    "ann_vol_%": {
+      "target": 6.67,
+      "realised": 6.45
+    },
+    "risk_contribution_top3": {
+      "DRREDDY.NS": 20.8,
+      "TATACONSUM.NS": 15.6,
+      "HINDUNILVR.NS": 13.1
+    },
+    "largest_weight": "DRREDDY.NS",
+    "largest_risk_source": "DRREDDY.NS",
+    "concentration": {
+      "n_assets": 11.0,
+      "pc1_variance_%": 30.357,
+      "pc3_variance_%": 48.755,
+      "effective_bets_entropy": 9.059,
+      "effective_bets_herfindahl": 7.01,
+      "avg_correlation": 0.23,
+      "effective_positions": 10.095
+    },
+    "crisis_replay": {
+      "GFC / Lehman": -5.0,
+      "Taper tantrum": -16.82,
+      "2018 tightening": 1.16,
+      "COVID crash": -3.62,
+      "Inflation shock": 3.43,
+      "Hiking cycle / SVB": 0.0
+    },
+    "episodes_covered": "6/6",
+    "scenarios": {
+      "Crude +30%": -0.02,
+      "USDINR +5%": -0.15,
+      "US10Y +100bp": -0.61,
+      "Global risk-off": 0.14
+    },
+    "scenario_mean_r2": 0.037,
+    "real_book_gap_turnover": null,
+    "caveat": "return, alpha and Sharpe over the sample are hindsight -- today's names run backwards through the window they were selected in"
+  },
+  "09_positioning": {
+    "updated_at": "2026-09-09T05:20:53+00:00",
+    "signal": "12 names scored, 6 short candidates checked for squeeze risk",
+    "score": 60.19,
+    "as_of": "2026-09-09",
+    "sources_ok": "6/7",
+    "lot_sizes_live": true,
+    "lot_divergence_vs_fallback": 0,
+    "fno_eligible": 50,
+    "lot_pct_of_capital": {
+      "min": 4.17,
+      "median": 6.39,
+      "max": 11.13
+    },
+    "nifty_options": {
+      "expiry": "15-Sep-2026",
+      "spot": 23504.1,
+      "pcr_oi": 0.799,
+      "pcr_volume": 0.931,
+      "max_pain": 23600.0,
+      "max_pain_distance_%": 0.41,
+      "atm_iv": 10.75,
+      "skew": 3.07,
+      "buildup": "short buildup"
+    },
+    "coverage": {
+      "option chain": 12,
+      "futures basis": 3,
+      "rollover": 0,
+      "names probed": 12
+    },
+    "crowding": {
+      "GRASIM.NS": 100.0,
+      "HINDUNILVR.NS": 91.7,
+      "ICICIBANK.NS": 88.9,
+      "DRREDDY.NS": 83.3,
+      "KOTAKBANK.NS": 75.0,
+      "TMPV.NS": 58.3,
+      "JSWSTEEL.NS": 50.0,
+      "ADANIPORTS.NS": 50.0,
+      "WIPRO.NS": 41.7,
+      "TITAN.NS": 33.3,
+      "TATACONSUM.NS": 25.0,
+      "COALINDIA.NS": 25.0
+    },
+    "squeeze_risk": [
+      "GRASIM.NS",
+      "HINDUNILVR.NS",
+      "DRREDDY.NS"
+    ],
+    "history_sessions": 1,
+    "unavailable": [
+      "delivery % (quote-equity trade_info returns 403)",
+      "India VIX term structure (no public futures endpoint)",
+      "official NSE rollover (not in any public JSON)"
+    ],
+    "exports": [
+      "outputs/fno_lots.csv",
+      "data/derivatives_history.csv"
+    ]
+  },
+  "12_factor_risk": {
+    "updated_at": "2026-09-09T20:36:38+00:00",
+    "signal": "34% systematic / 66% specific",
+    "score": 33.9,
+    "as_of": "2026-09-09",
+    "risk_free_%": 6.25,
+    "risk_free_source": "stated prior (RBI policy corridor); override per call (as of 2026-09-09)",
+    "decomposition": {
+      "total_vol_%": 7.6719,
+      "systematic_vol_%": 4.4651,
+      "specific_vol_%": 6.2386,
+      "systematic_share_%": 33.8739,
+      "specific_share_%": 66.1261,
+      "n_names": 11,
+      "n_factors": 6,
+      "factor_cov_method": "EWMA (halflife 126 periods)"
+    },
+    "top_style_exposure": {
+      "factor": "size",
+      "net_exposure": 0.7439
+    },
+    "performance_excess_basis": {
+      "cagr_%": 8.7823,
+      "excess_cagr_%": 2.3834,
+      "ann_vol_%": 7.3369,
+      "sharpe": 0.3579,
+      "sortino": 0.345,
+      "calmar": 0.3244,
+      "max_drawdown_%": -7.3472,
+      "rf_annual_%": 6.25
+    },
+    "sharpe_vs_zero_overstatement": 0.8264,
+    "benchmark_relative": {
+      "beta": 0.0785,
+      "jensen_alpha_ann_%": 2.5839,
+      "tracking_error_ann_%": 14.1975,
+      "information_ratio": 0.1476,
+      "up_capture_%": 8.1575,
+      "down_capture_%": -2.653
+    },
+    "active_share_%": 84.9626,
+    "factor_model": {
+      "n_factors": 6,
+      "mean_cross_sectional_r2": 0.2084,
+      "n_estimation_dates": 457,
+      "parameters": 71,
+      "sample_parameters": 1275
+    }
+  },
+  "13_execution_capacity": {
+    "updated_at": "2026-09-09T20:36:57+00:00",
+    "signal": "25 bps round trip | margin utilisation 4.3%",
+    "score": 25.3,
+    "as_of": "2026-09-08",
+    "capital": 10000000,
+    "costs": {
+      "weighted_avg_bps": 25.2667,
+      "total_INR": 25266.6982,
+      "long_explicit_round_trip_bps": 29.3045,
+      "short_explicit_round_trip_bps": 7.3519,
+      "flat_placeholder_bps": 25,
+      "n_extrapolating": 0,
+      "rates_as_of": "2026-09-09"
+    },
+    "capacity": {
+      "gross_alpha_assumed_bps": 300.0,
+      "capacity_INR": 5000000.0,
+      "cost_at_1cr_bps": 303.2004,
+      "cost_at_100cr_bps": 776.0487
+    },
+    "liquidity": {
+      "n_adv_breach": 0,
+      "p95_days_to_liquidate": 1.0,
+      "var_1d_%": 0.7372,
+      "var_liquidity_adjusted_%": 0.7372
+    },
+    "margin": {
+      "total_INR": 430844.8677,
+      "utilisation": 0.0431,
+      "free_cash_%": 48.4795,
+      "adequate": true,
+      "utilisation_at_2x_vol": 0.0686,
+      "basis": "SPAN approximated by scan range; ELM exact"
+    }
+  },
+  "14_governance": {
+    "updated_at": "2026-09-09T20:37:44+00:00",
+    "signal": "DO NOT DEPLOY -- paper only | 0 hard breach(es) | VaR green",
+    "score": 5.0,
+    "as_of": "2026-09-09",
+    "stance": "DO NOT DEPLOY -- paper only",
+    "verdict_source": "Technical leg: Not proven",
+    "multiple_testing": {
+      "n_tests": 15,
+      "naive_significant": 6,
+      "survives_fdr": 5,
+      "survives_fwer": 0,
+      "median_max_t_under_null": 1.6782,
+      "family_critical_t": 2.6864,
+      "deflated_sharpe_prob": 0.0003
+    },
+    "avg_factor_correlation": 0.08,
+    "bootstrap_ic": {
+      "observed_mean": -0.0368,
+      "ci_low": -0.0745,
+      "ci_high": 0.0037,
+      "excludes_zero": false
+    },
+    "walk_forward": {
+      "folds_positive": 1,
+      "folds_total": 4,
+      "oos_mean_ic": -0.0411
+    },
+    "reality_check": {
+      "best_candidate": "ret_12m_%",
+      "p_value": 0.791,
+      "n_candidates": 15,
+      "verdict": "best candidate is within what the search alone produces"
+    },
+    "var_backtest": {
+      "ex_ante_vol_%": 6.6818,
+      "var_95_1d_%": 0.8091,
+      "cvar_95_1d_%": 1.189,
+      "var_backtest_zone": "green",
+      "var_exceptions": 122,
+      "var_expected": 110.6,
+      "bias": 1.0531,
+      "worst_stress_loss_%": -2.0281
+    },
+    "limits": {
+      "n_limits": 13,
+      "measured": 13,
+      "hard_breaches": 0,
+      "soft_breaches": 0,
+      "not_measured": 0,
+      "near_limit": [
+        "max_position_weight"
+      ]
+    },
+    "run_id": "77dc11b7f0d9cf64",
+    "config_fingerprint": "909377f149627e78"
+  }
+}
